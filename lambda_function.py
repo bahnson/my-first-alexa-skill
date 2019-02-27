@@ -55,7 +55,7 @@ def get_welcome_response():
     """
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Willkommen zu Bahnsoans erster Alexa app! Ich bin unnütz, aber ich fetze"
+    speech_output = "Willkommen zu Deinem ersten Alexa Skill!"
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = "Anscheinend bist Du eingeschlafen." + speech_output
@@ -144,7 +144,7 @@ def on_intent(intent_request, session):
     intent_name = intent_request['intent']['name']
 
     # Dispatch to your skill's intent handlers
-    if intent_name == "NiceIntent":
+    if intent_name == "SaySomethingNiceIntent":
         return get_nice_response()
     elif intent_name == "AMAZON.HelpIntent":
         return get_help_response()
@@ -156,7 +156,6 @@ def on_intent(intent_request, session):
 
 def on_session_ended(session_ended_request, session):
     """ Called when the user ends the session.
-
     Is not called when the skill returns should_end_session=true
     """
     print("on_session_ended requestId=" + session_ended_request['requestId'] +
